@@ -19,6 +19,7 @@ import pandas
 import pandas as pd
 import optparse, json, argparse, math
 import ROOT
+import time
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
@@ -55,7 +56,7 @@ seed = 7
 ##small changes
 np.random.seed(7)
 rng = np.random.RandomState(31337)
-
+timestr=time.strftime("%Y%m%d-%H%M%S")
 def load_data(inputPath,variables,criteria):
     # Load dataset to .csv format file
     my_cols_list=variables+['process', 'key', 'target', 'totalWeight','sampleWeight']
@@ -322,12 +323,12 @@ def main():
     number_of_classes = 5
 
     # Create instance of output directory where all results are saved.
-    output_directory = '/publicfs/cms/user/yuancc/DarkMatter/MUSICsim/ttHnew/ttH_multilepton/keras-DNN/result/2017samples_full_py3_Joshuha_BS_XMAS_HigherBS_MoreEpochs_%s_%s/' % (selection,classweights_name)
+    output_directory = '/publicfs/cms/data/TopQuark/cms13TeV/ForDNNSharing/result'
     
     check_dir(output_directory)
 
     # Create plots subdirectory
-    plots_dir = os.path.join(output_directory,'plots/')
+    plots_dir = os.path.join(output_directory,'plots/'+timestr)
     plots_dir3 = os.path.join(output_directory,'plots3/')
     plots_dir4 = os.path.join(output_directory,'plots4/')
 
@@ -350,7 +351,7 @@ def main():
     column_headers.append('EVENT_rWeights')
 
     # Create instance of the input files directory
-    inputs_file_path = '/publicfs/cms/user/yuancc/DarkMatter/MUSICsim/ttHnew/ttH_multilepton/keras-DNN/sample'
+    inputs_file_path = '/publicfs/cms/data/TopQuark/cms13TeV/ForDNNSharing/sample'
 
     # Load ttree into .csv including all variables listed in column_headers
     print('<train-DNN> Input file path: ', inputs_file_path)
