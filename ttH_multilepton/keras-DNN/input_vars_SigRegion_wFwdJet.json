@@ -34,5 +34,8 @@
   "mbb":"\"F\"",
   "n_presel_jetFwd":"\"F\"",
   "jetFwd1_pt":"\"F\"",
-  "jetFwd1_eta":"\"F\""
+  "jetFwd1_eta":"\"F\"",
+  "hadTop_pt":"\"F\"",
+  "deta_highest2b[0]":"\"F\""
 }
+
